@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route  , Switch} from 'react-router-dom';
-import AllLaunches from "./hoc/AllLaunches";
-import UpcomingLaunches from "./hoc/UpcomingLaunches";
-import PastLaunches from "./hoc/PastLaunches";
+import AllLaunches from "./componets/AllLaunches";
+import UpcomingLaunches from "./componets/UpcomingLaunches";
+import PastLaunches from "./componets/PastLaunches";
 
 import logo from './assets/Logo.png';
 import './App.css';
