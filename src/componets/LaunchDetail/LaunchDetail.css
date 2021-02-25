@@ -1,0 +1,34 @@
+.launchDetail{
+    padding : 10px;
+}
+
+.launchDetailHead{
+    width : 50%;
+    display : flex;
+    justify-content : space-around;
+}
+
+.launchDescription{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.tableRow:first-of-type{
+    border-top: none
+}
+
+.tableRow{
+    display: flex;
+    width : 100%;
+    height: fit-content;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 1px solid #E4E4E7;
+}
+
+.tableTitle{
+    flex : 1;
+}
+
+.tableValue{
+    flex : 2;
+}

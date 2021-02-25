@@ -1,14 +1,23 @@
 import React ,{useState} from "react";
-import Loader from "../../UI/Loader";
+import Loader from "../../UI/Loader/Loader";
 import NoData from "../../UI/NoData";
 import Paginate from "../Paginate/Paginate";
+import Modal from "../../UI/Modal/Modal";
+import LaunchDetail from "../LaunchDetail/LaunchDetail";
 
 import './LaunchList.css';
+import LaunchStatus from "../LaunchStatus/LaunchStatus";
 
 function LaunchList(props) {
 
     const noOfItemsInPage = 12;
     let [page , setPage] = useState(1);
+    let [modalData , setModalData] = useState(null);
+
+    let openModal = (launchData) => {
+        console.log(launchData);
+        setModalData(launchData);
+    }
 
     let display = null;
 
@@ -23,28 +32,14 @@ function LaunchList(props) {
         let displayData = props.data.slice((page - 1) * noOfItemsInPage,(page - 1) * noOfItemsInPage +  noOfItemsInPage)
                                 .map((item , index) => {
                                     const notAvailable = "NA";
-
-                                    let getLaunchStatus = (statusAsBoolean) => {
-                                        if(statusAsBoolean === true){
-                                            return (<p className = "successStatus">Success</p>)
-                                        }
-                                        else if(statusAsBoolean === false){
-                                            return (<p className = "failedStatus">Failed</p>)
-                                        }
-                                        else{
-                                            return (<p className = "upcomingStatus">Upcoming</p>)
-                                        }
-                                    }
-
-                                    let launch_success = getLaunchStatus(item.launch_success);
                                     
-                                    return (<tr key = {index}>
+                                    return (<tr key = {index} onClick = {() => openModal(item)}>
                                                 <td>{item.flight_number ? item.flight_number: notAvailable}</td>
                                                 <td>{item.launch_date_utc ? item.launch_date_utc : notAvailable}</td>
                                                 <td>{item.launch_site.site_name ? item.launch_site.site_name : notAvailable}</td>
                                                 <td>{item.mission_name ? item.mission_name : notAvailable}</td>
                                                 <td>{notAvailable}</td>
-                                                <td>{launch_success ? launch_success : notAvailable}</td>
+                                                <td><LaunchStatus statusAsBoolean = {item.launch_success} /></td>
                                                 <td>{item.rocket.rocket_name ? item.rocket.rocket_name : notAvailable}</td>
                                             </tr>);
                                 });
@@ -73,6 +68,9 @@ function LaunchList(props) {
                 {display}
             </table>
             <Paginate totalItems = {props.data ? props.data.length : 0} itemPerPage = {noOfItemsInPage} pageClicked = {setPage} currentPage={page} />
+            <Modal show = {modalData !== null} modalClosed = {() => setModalData(null)} >
+                <LaunchDetail launchData = {modalData}/>
+            </Modal>
         </div>
     );
 }

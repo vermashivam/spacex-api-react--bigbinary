@@ -1,5 +1,5 @@
 import React from "react";
-import loaderIcon from "../assets/Loader.png";
+import loaderIcon from "../../assets/Loader.png";
 
 import  "./Loader.css";
 

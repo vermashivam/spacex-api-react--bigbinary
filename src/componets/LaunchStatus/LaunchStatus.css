@@ -1,0 +1,26 @@
+.successStatus{
+    text-align: center;
+    background: #DEF7EC;
+    border-radius: 20px;
+    height: fit-content;
+    width: fit-content;
+    padding: 6px;
+}
+
+.failedStatus{
+    text-align: center;
+    background: #FDE2E1;
+    border-radius: 20px;
+    height: fit-content;
+    width: fit-content;
+    padding: 6px;
+}
+
+.upcomingStatus{
+    text-align: center;
+    background: #FEF3C7;
+    border-radius: 20px;
+    height: fit-content;
+    width: fit-content;
+    padding: 6px;
+}
