@@ -6,6 +6,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 function FilterDate(props){
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
+    let [message, setMessage] = useState({
+        show : false,
+        message : null
+    });
 
     let history = useHistory();
 
@@ -23,18 +27,27 @@ function FilterDate(props){
     }
     
     let applyFilter = () => {
-        props.setDate(prevDate => {
-            let newDate = {...prevDate};
-
-            newDate.startDate = startDate;
-            newDate.endDate = endDate;
-            newDate.show = false;
-            history.push("/" + (startDate ? "start=" + formatDate(startDate) : "") 
-                            + "/"
-                            + (endDate ? "end=" + formatDate(endDate) : ""));
-
-            return newDate;
-        })
+        if(startDate === null || endDate === null){
+            setMessage({
+                show : true,
+                message : 'All fields are required!'
+            });
+        }
+        else{
+            props.setDate(prevDate => {
+                let newDate = {...prevDate};
+    
+                newDate.startDate = startDate;
+                newDate.endDate = endDate;
+                newDate.show = false;
+                if(startDate !== null && endDate !== null){
+                    history.push("/" + (startDate ? "start=" + formatDate(startDate) : "") 
+                                + "/"
+                                + (endDate ? "end=" + formatDate(endDate) : ""));
+                }
+                return newDate;
+            });
+        }
     }
 
     return (
@@ -58,6 +71,7 @@ function FilterDate(props){
                 </div>
             </div>
             <button onClick = {applyFilter} >Apply Filter</button>
+            <p style = {message.show ? {} : {display : 'none'}}>{message.message}</p>
         </>
     )
 }
