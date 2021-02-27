@@ -22,6 +22,15 @@
   top: 20px;
 }
 
+.filter{
+  position: absolute;
+  width: 952px;
+  height: 726px;
+  left: 245px;
+  top: 120px;
+  height: 30px;
+}
+
 /* .App-header {
   background-color: #e9ecf1;
   min-height: 100vh;

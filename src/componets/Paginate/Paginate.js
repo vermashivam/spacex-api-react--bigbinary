@@ -19,7 +19,7 @@ let Page = ({pageClicked = () =>{} , number = '---'}) => {
 let Paginate = ({totalItems = 0 , itemPerPage = 10 , pageClicked, currentPage}) => {
     const maxTabToDisplay = 7;
     let noOfPages = Math.ceil(totalItems/itemPerPage);
-    console.log(totalItems);
+    
     let page = [];
 
     let navPage = (direction) => {
