@@ -5,7 +5,6 @@ import LaunchList from "./LaunchList/LaunchList";
 function AllLaunches(props) {
 
     let [ launchData , setLaunchData] = useState(null);
-    console.log(launchData);
 
     useEffect(() => {
         (async function() {
