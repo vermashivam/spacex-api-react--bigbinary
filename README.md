@@ -1,3 +1,7 @@
+# This app uses the Fake SpaceX api, to display list of spacex mission
+
+You can view there status, and also you filter list on the basis of date, and status.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
